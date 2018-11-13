@@ -1,32 +1,21 @@
 /** An empty service worker! */
+
+
 self.addEventListener('fetch', function(event) {
+  if (event.request.url == 'https://amitgandole.github.io/') {
+    console.info('responding to everything fetch with Service Worker! 🤓');
+    event.respondWith(fetch(event.request).catch(function(e) {
+      let out = {Gold: 1, Size: -1, Actions: []};
+      return new Response(JSON.stringify(out));
+    }));
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
     })
   );
-});
-
-navigator.serviceWorker && navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
-const publicKey ='BHlNRf0EG5a7LmaFr0PD6j0kfSZSeVgIS0sJko8xbRpF2U3QsKbp51AtHyNDm_HSyAMR10VEiEj1VckpUXTLSt4';
-  serviceWorkerRegistration.pushManager.getSubscription()  
-    .then(function(subscription) {  
-      if (subscription) {
-        console.info('Got existing', subscription);
-        window.subscription = subscription;
-        return;  // got one, yay
-      }
-
-      const applicationServerKey = urlB64ToUint8Array(publicKey);
-      serviceWorkerRegistration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey,
-      })
-        .then(function(subscription) { 
-          console.info('Newly subscribed to push!', subscription);
-          window.subscription = subscription;
-        });
-    });
 });
 
 //NOT WORKING STILL
@@ -44,7 +33,7 @@ self.addEventListener('install', function(e) {
       return cache.addAll([
         '/',
         '/index.html',
-        
+        '/aa.html',
         '/manifest.json',
         
         '/site.js'
