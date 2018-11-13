@@ -1,7 +1,0 @@
-1. Always run pages on https. Running locally will not give you app.(It will but browser makes trouble to the service workers running offline.)
-
-2. if its not working as expected try watching console of chrome.
-
-3. Always do LightHouse testing by chrome dev-Tools.
-
-4. Enjoy PWA!
