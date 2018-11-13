@@ -29,12 +29,19 @@ const publicKey ='BHlNRf0EG5a7LmaFr0PD6j0kfSZSeVgIS0sJko8xbRpF2U3QsKbp51AtHyNDm_
     });
 });
 
-//NOT WORKING STILL
 self.addEventListener('push', function(event) {
   event.waitUntil(
     self.registration.showNotification('Got Push?', {
       body: 'Push Message received'
    }));
+});
+
+
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open('the-magic-cache').then(function(cache) {
+    });
+  );
 });
 
 
