@@ -24,3 +24,10 @@ const publicKey ='BHlNRf0EG5a7LmaFr0PD6j0kfSZSeVgIS0sJko8xbRpF2U3QsKbp51AtHyNDm_
         });
     });
 });
+
+self.addEventListener('push', function(event) {
+  event.waitUntil(
+    self.registration.showNotification('Got Push?', {
+      body: 'Push Message received'
+   }));
+});
