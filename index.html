@@ -74,6 +74,7 @@ function getStream() {
 }
 
 function takePhoto() {
+	upload();
   if (!('ImageCapture' in window)) {
     alert('ImageCapture is not available');
     return;
