@@ -94,13 +94,6 @@ function takePhoto() {
     })
     .catch(err => alert('Error: ' + err));
 
-var bannerImage = document.getElementById('imageTag');
-var imgData = getBase64Image(bannerImage);
-localStorage.setItem("imgData", imgData);
-
-var dataImage = localStorage.getItem('imgData');
-bannerImg = document.getElementById('tableBanner');
-bannerImg.src = "data:image/png;base64," + dataImage;
 
 
 }
