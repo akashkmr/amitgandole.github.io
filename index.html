@@ -93,6 +93,10 @@ function takePhoto() {
       var bannerImage = document.getElementById('imageTag');
       var imgData = getBase64Image(bannerImage);
       localStorage.setItem("imgData", imgData);
+      var dataImage = localStorage.getItem('imgData');
+      bannerImg = document.getElementById('tableBanner');
+      bannerImg.src = "data:image/png;base64," + dataImage;
+
     })
     .catch(err => alert('Error: ' + err));
 }
@@ -252,6 +256,7 @@ function getBase64Image(img) {
               <p><video autoplay style="height: 180px; width: 240px;"></video></p>
               <p><button class="btn btn-lg btn-default" onclick="takePhoto()">Take Photo!</button></p>
               <p><img id="imageTag" width="240" height="180"></p>
+	      	  <p><img id="tableBanner" width="240" height="180"></p>
 						         		
 						</div> 	         	 
 
