@@ -90,18 +90,14 @@ function takePhoto() {
     .then(blob => {
       var theImageTag = document.getElementById("imageTag");
       theImageTag.src = URL.createObjectURL(blob);
-      //var bannerImage = document.getElementById('imageTag');
-     // var imgData = getBase64Image(bannerImage);
-      localStorage.setItem("imgData", URL.createObjectURL(blob));
-
-      var dataImage = localStorage.getItem('imgData');
-      bannerImg = document.getElementById('tableBanner');
-      bannerImg.src = "data:image/png;base64," + dataImage;
-
+      var bannerImage = document.getElementById('imageTag');
+	upload();
     })
     .catch(err => alert('Error: ' + err));
 }
 
+function upload() {alert(1);}
+ 
 function getBase64Image(img) {
     var canvas = document.createElement("canvas");
     canvas.width = img.width;
