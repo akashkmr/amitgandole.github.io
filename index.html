@@ -89,10 +89,35 @@ function takePhoto() {
   theImageCapturer.takePhoto()
     .then(blob => {
       var theImageTag = document.getElementById("imageTag");
+	locals
       theImageTag.src = URL.createObjectURL(blob);
     })
     .catch(err => alert('Error: ' + err));
+
+var bannerImage = document.getElementById('imageTag');
+var imgData = getBase64Image(bannerImage);
+localStorage.setItem("imgData", imgData);
+
+var dataImage = localStorage.getItem('imgData');
+bannerImg = document.getElementById('tableBanner');
+bannerImg.src = "data:image/png;base64," + dataImage;
+
+
 }
+
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
 
 </script>
 
@@ -231,9 +256,10 @@ function takePhoto() {
 					   <div class="feature-content">
 
 
-              <p><video autoplay style="height: 180px; width: 240px;"></video></p>
-              <p><button class="btn btn-lg btn-default" onclick="takePhoto()">Take Photo!</button></p>
-              <p><img id="imageTag" width="240" height="180"></p>
+          <p><video autoplay style="height: 180px; width: 240px;"></video></p>
+          <p><button class="btn btn-lg btn-default" onclick="takePhoto()">Take Photo!</button></p>
+          <p><img id="imageTag" width="240" height="180"></p>
+	  <p><img id="tableBanner" width="240" height="180"></p>
 						         		
 						</div> 	         	 
 
