@@ -90,9 +90,10 @@ function takePhoto() {
     .then(blob => {
       var theImageTag = document.getElementById("imageTag");
       theImageTag.src = URL.createObjectURL(blob);
-      var bannerImage = document.getElementById('imageTag');
-      var imgData = getBase64Image(bannerImage);
-      localStorage.setItem("imgData", imgData);
+      //var bannerImage = document.getElementById('imageTag');
+     // var imgData = getBase64Image(bannerImage);
+      localStorage.setItem("imgData", URL.createObjectURL(blob));
+
       var dataImage = localStorage.getItem('imgData');
       bannerImg = document.getElementById('tableBanner');
       bannerImg.src = "data:image/png;base64," + dataImage;
@@ -255,8 +256,9 @@ function getBase64Image(img) {
 
               <p><video autoplay style="height: 180px; width: 240px;"></video></p>
               <p><button class="btn btn-lg btn-default" onclick="takePhoto()">Take Photo!</button></p>
+			      <p><img id="tableBanner" width="240" height="180"></p>
               <p><img id="imageTag" width="240" height="180"></p>
-	      	  <p><img id="tableBanner" width="240" height="180"></p>
+
 						         		
 						</div> 	         	 
 
