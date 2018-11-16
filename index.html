@@ -74,7 +74,6 @@ function getStream() {
 }
 
 function takePhoto() {
-	upload();
   if (!('ImageCapture' in window)) {
     alert('ImageCapture is not available');
     return;
@@ -97,7 +96,16 @@ function takePhoto() {
     .catch(err => alert('Error: ' + err));
 }
 
-function upload() {alert(1);}
+function upload() {
+
+var bannerImage = document.getElementById('imageTag');
+var imgData = getBase64Image(bannerImage);
+localStorage.setItem("imgData", imgData);
+
+var dataImage = localStorage.getItem('imgData');
+bannerImg = document.getElementById('tableBanner');
+bannerImg.src = "data:image/png;base64," + dataImage;
+}
  
 function getBase64Image(img) {
     var canvas = document.createElement("canvas");
