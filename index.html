@@ -98,18 +98,6 @@ function takePhoto() {
 
 }
 
-function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
 
 
 </script>
@@ -252,7 +240,7 @@ function getBase64Image(img) {
           <p><video autoplay style="height: 180px; width: 240px;"></video></p>
           <p><button class="btn btn-lg btn-default" onclick="takePhoto()">Take Photo!</button></p>
           <p><img id="imageTag" width="240" height="180"></p>
-	  <p><img id="tableBanner" width="240" height="180"></p>
+
 						         		
 						</div> 	         	 
 
